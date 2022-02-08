@@ -1,0 +1,39 @@
+import java.util.*;
+
+class Solution {
+    public int solution(String[][] clothes) {
+        int answer = 0;                                                                 
+       HashMap<String,Integer> clothNameMap = new HashMap<>();
+        HashMap<String,Integer> clothMenuMap = new HashMap<>();
+        int i =0;
+        int j =0;
+        for (String[] cloth:clothes){ //의상 수
+            j=0;
+            for (String clothDetail : cloth){
+                if(j==1) {//0이면 이름 1이면 종류
+                    clothMenuMap.put(cloth[j],clothMenuMap.getOrDefault(cloth[j],0)+1);
+                }
+                else if(j!=1){
+                    clothNameMap.put(cloth[j],clothNameMap.getOrDefault(cloth[j],0)+1);
+                }
+                j++;
+            }
+            i++;
+        }
+        
+        //메뉴별 개수 +1(안사용하는 경우) 를 전부다 곱함(전체 경우의 수) -1(전체 안사용하는 경우는 제외)
+        for (String val : clothMenuMap.keySet()){
+            //System.out.println(clothMenuMap.get(val)+1);
+            if(answer==0){
+                answer=(clothMenuMap.get(val)+1);
+            }else {
+                answer = answer * (clothMenuMap.get(val) + 1);
+            }
+        }
+        answer = answer-1;
+        
+        return answer;
+    }
+    
+
+}
