@@ -2,7 +2,10 @@ package Inf;
 
 public class MainC {
     public static void main(String[] args) {
-        Solve solve = new Solve();
-        solve.Problem();
+        SolveProblem solve = new Solve();//2단원
+                     solve = new Solve3();//3단원 
+                     solve.Problem();
+
+
     }
 }

@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Solve {
+public class Solve implements SolveProblem{
 
     public void Problem(){
 
 
-        //P2_3();
+        P2_3();
         //P2_4();
         //P2_5();
         //P2_6();
@@ -17,7 +17,7 @@ public class Solve {
         //P2_8();
         //P2_9();
 
-        Scanner sc = new Scanner(System.in);
+        /*Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
         int [][] arr = new int[N][N];
 
@@ -28,7 +28,7 @@ public class Solve {
         }
 
         //P2_10(N,arr);
-        P2_11(N,arr);
+        P2_11(N,arr);*/
 
 
     }
