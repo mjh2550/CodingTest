@@ -284,31 +284,40 @@ public class Solve4 implements SolveProblem{
          * 143
          *
          */
-        
+
         /**
-         * 무작위 3장 뽑아서 가장 높은 경우의 수 중 k값
+         * SET 자료구조는 일반적으로 중복저장이 불가하고 순위가 저장되지 않지만
+         * TreeSet은 이진탐색트리(BinarySearchTree)으로 되어있어 순서가 정렬된다.
+         * TreeSet은 속도는 느리지만, 검색과 정렬에 뛰어난 성능을 보인다
+         *
          */
 
         int n = 10;
         int k = 3;
         Integer arr[] = {13, 15, 34, 23, 45, 65 ,33, 11, 26 ,42};
-        int sum =0;
-        Arrays.sort(arr, Collections.reverseOrder());//역순 정렬 (java.util.collections 패키지)
+      //  Arrays.sort(arr, Collections.reverseOrder());//역순 정렬 (java.util.collections 패키지)
+        TreeSet<Integer> treeSet = new TreeSet<>(Collections.reverseOrder());
 
-
-
-        HashMap<Integer,Integer> hashMap = new HashMap<>();
-        for (int i =0 ;i <= n-k ;i++){
-            for( int j=i ; j<k+i ; j++){
-                sum += arr[j];
+        for (int i = 0; i< n ; i++){
+            for( int j = i+1; j<n ; j++){
+                for (int l = j+1 ; l<n ; l++){
+                  /*  if(treeSet.size()==k){
+                        break;
+                    }*/
+                    treeSet.add(arr[i]+arr[j]+arr[l]);
+                }
             }
-            hashMap.put(i,sum);
-            sum=0;
         }
 
-        System.out.println(hashMap.get(k-1)); //3장 합한 수들 중 k번째로 큰수
-        System.out.println(arr[k-1]); //k번째로 큰 수
-
+        int idx =1;
+       for( int x: treeSet){
+           if(idx==k){
+               System.out.println(x);
+               break;
+           }
+               idx++;
+       }
+        System.out.println(treeSet.last());
 
 
     }
