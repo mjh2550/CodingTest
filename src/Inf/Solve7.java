@@ -1,5 +1,6 @@
 package Inf;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -9,7 +10,8 @@ public class Solve7 implements SolveProblem{
     @Override
     public void Problem() {
     //    P7_1(); //Memoization , StackFrame
-        P7_2();
+     //   P7_2();
+        P7_DFS1();
 
     }
     public void P7_1(){
@@ -119,6 +121,45 @@ public class Solve7 implements SolveProblem{
             System.out.println();
         }
     }
+
+    static int n ;
+    static int[] ch;
+    public void P7_DFS1(){
+        /**
+         * 3
+         *
+         * 1 2 3
+         * 1 2
+         * 1 3
+         * 1
+         * 2 3
+         * 2
+         * 3
+         */
+        n=3;
+        ch = new int [n+1];
+        D(1);//Root 값
+
+    }
+
+    public void D(int val){
+
+        if(val==n+1) {//마지막 순회때 이곳에 걸림
+          for(int i = 1; i<n+1 ; i++){
+              if(ch[i]!=0) System.out.print(i+" ");
+          }
+            System.out.println();
+        }
+        else{
+            ch[val] = 1;
+            D(val+1);
+            ch[val] =0;
+            D(val+1);
+        }
+    }
+
+
+
 
 
 
